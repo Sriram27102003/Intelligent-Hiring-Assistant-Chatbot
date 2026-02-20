@@ -1,6 +1,6 @@
 # 🤖 TalentScout Hiring Assistant
 
-> An intelligent conversational AI chatbot for initial candidate screening, built with **Streamlit** and **Claude (claude-sonnet-4-20250514)**.
+> An intelligent conversational AI chatbot for initial candidate screening, built with **Streamlit** and **Groq**.
 
 ---
 
@@ -22,7 +22,7 @@ TalentScout Hiring Assistant automates the first stage of technical recruitment 
 ### Prerequisites
 
 - Python 3.10+
-- An [Anthropic API key](https://console.anthropic.com/)
+- An [Groq API key](https://console.groq.com/)
 
 ### Installation
 
@@ -39,10 +39,6 @@ source venv/bin/activate        # Linux/macOS
 # 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Set your Anthropic API key
-export ANTHROPIC_API_KEY="sk-ant-..."   # Linux/macOS
-# set ANTHROPIC_API_KEY=sk-ant-...      # Windows CMD
-# $env:ANTHROPIC_API_KEY="sk-ant-..."  # PowerShell
 ```
 
 ### Run Locally
@@ -92,8 +88,8 @@ talentscout-hiring-assistant/
 | Component | Choice | Reason |
 |-----------|--------|--------|
 | Frontend | Streamlit | Fast to build, great chat support |
-| LLM | `claude-sonnet-4-20250514` | Strong reasoning, instruction-following |
-| LLM SDK | `anthropic` Python SDK | Official, async-ready |
+| LLM | Groq | Strong reasoning, instruction-following |
+| LLM SDK | `groq` Python SDK | Official, async-ready |
 | Storage | Local JSON | Simple, no infrastructure overhead |
 
 ### Architecture
@@ -104,7 +100,7 @@ User Input
     ▼
 app.py  ──── ConversationManager ──── System Prompt (stage-aware)
     │               │                         │
-    │          extract_info()           Claude API
+    │          extract_info()           Groq API
     │          process_response()            │
     │               │                   AI Response
     ▼               ▼
